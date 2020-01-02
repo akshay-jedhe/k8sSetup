@@ -1,21 +1,16 @@
 apiVersion: v1
 kind: Pod
 metadata:
-   name: nginx-pod
+   name: gcepd-pod
 spec:
    containers:
-   - name: prouducer-ctn
+   - name: sample-ctn
      image: centos
      volumeMounts:
-     - name: ctn-vol
+     - name: gcepd-vol
        mountPath: /app/
      command: ["tail","-f","/dev/null"]
-   - name: consumer-ctn
-     image: centos
-     volumeMounts:
-     - name: ctn-vol
-       mountPath: /test/
-     command: ["tail","-f","/dev/null"]
    volumes:
-   - name: ctn-vol
-     emptyDir: {}
+   - name: gcepd-vol
+     gcePersistentDisk:
+        pdName: mydisk
