@@ -4,12 +4,18 @@ metadata:
    name: nginx-pod
 spec:
    containers:
-   - name: nginx-ctn
-     image: nginx
+   - name: prouducer-ctn
+     image: centos
      volumeMounts:
-     - name: nginx-secret
+     - name: ctn-vol
        mountPath: /app/
+     command: ["tail","-f","/dev/null"]
+   - name: consumer-ctn
+     image: centos
+     volumeMounts:
+     - name: ctn-vol
+       mountPath: /test/
+     command: ["tail","-f","/dev/null"]
    volumes:
-   - name: nginx-secret
-     secret:
-        secretName: nginx-secret
+   - name: ctn-vol
+     emptyDir: {}

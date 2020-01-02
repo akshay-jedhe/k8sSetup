@@ -1,4 +1,4 @@
-Using Secret As type of Volume:
-1.A secret volume is used to pass sensitive information, such as passwords, to Pods. You can store secrets in the Kubernetes API and mount them as files for use by Pods without coupling to Kubernetes directly. 
-2.You must create a secret in the Kubernetes API before you can use it.
-3.A Container using a Secret as a subPath volume mount will not receive Secret updates.
+Using emptyDir As type of Volume:
+1.An emptyDir volume is first created when a Pod is assigned to a Node, and exists as long as that Pod is running on that node. As the name says, it is initially empty. Containers in the Pod can all read and write the same files in the emptyDir volume, though that volume can be mounted at the same or different paths in each Container. When a Pod is removed from a node for any reason, the data in the emptyDir is deleted forever.
+2.A Container crashing does NOT remove a Pod from a node, so the data in an emptyDir volume is safe across Container crashes.
+
