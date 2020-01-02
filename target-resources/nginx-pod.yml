@@ -7,9 +7,9 @@ spec:
    - name: nginx-ctn
      image: nginx
      volumeMounts:
-     - name: nginx-pod-vol
+     - name: nginx-secret
        mountPath: /app/
    volumes:
-   - name: nginx-pod-vol
-     configMap:
-        name: nginx-map
+   - name: nginx-secret
+     secret:
+        secretName: nginx-secret

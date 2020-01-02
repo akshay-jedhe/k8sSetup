@@ -1,5 +1,4 @@
-Using ConfigMap As type of Volume:
-1.The configMap resource provides a way to inject configuration data into Pods. The data stored in a ConfigMap object can be referenced in a volume of type configMap and then consumed by containerized applications running in a Pod.
-2.You must create a ConfigMap before you can use it.
-3.A Container using a ConfigMap as a subPath volume mount will not receive ConfigMap updates.
-4.for more please ref Docs.
+Using Secret As type of Volume:
+1.A secret volume is used to pass sensitive information, such as passwords, to Pods. You can store secrets in the Kubernetes API and mount them as files for use by Pods without coupling to Kubernetes directly. 
+2.You must create a secret in the Kubernetes API before you can use it.
+3.A Container using a Secret as a subPath volume mount will not receive Secret updates.
