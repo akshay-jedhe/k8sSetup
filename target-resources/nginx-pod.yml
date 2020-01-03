@@ -1,16 +1,15 @@
 apiVersion: v1
 kind: Pod
 metadata:
-   name: gcepd-pod
+   name: nginx-pod
 spec:
    containers:
-   - name: sample-ctn
-     image: centos
+   - name: nginx-ctn
+     image: nginx
      volumeMounts:
-     - name: gcepd-vol
-       mountPath: /app/
-     command: ["tail","-f","/dev/null"]
+     - name: nginx-vol
+       mountPath: /data/
    volumes:
-   - name: gcepd-vol
-     gcePersistentDisk:
-        pdName: mydisk
+   - name: nginx-vol
+     persistentVolumeClaim:
+        claimName: nginx-pod-pvc
